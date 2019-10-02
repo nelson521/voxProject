@@ -2,11 +2,13 @@ $.getJSON("/articles", function(data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br /><a href=" + data[i].link +">Read More...<a></p>").append('<button data-id=' + data[i]._id+'> Add Note</button>')
+
   }
+  
 });
 
-$(document).on("click", "p", function() {
+$(document).on("click", "button", function() {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
@@ -37,4 +39,6 @@ $(document).on("click", "p", function() {
     }
   });
 });
+
+
 
